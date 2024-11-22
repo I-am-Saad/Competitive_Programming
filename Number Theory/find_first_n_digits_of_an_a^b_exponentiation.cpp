@@ -6,6 +6,18 @@
 
 #include<bits/stdc++.h>
 using namespace std;
+
+long long bin_pow(long long a, long long b, long long mod){     //mod = 10^last digit
+    long long ans = 1;
+    while(b){
+        if(b&1)     //b%2 == 1
+            ans *= a;
+        a = ( (a%mod) * (a%mod) )%mod;
+        b>>=1;  //b = b/2;
+    }
+    return ans;
+}
+
 int main(){
     ios_base::sync_with_stdio(false),cin.tie(nullptr);
     int T; cin>>T; while(T--){
@@ -22,7 +34,7 @@ int main(){
 
             // cout<<static_cast<long long>(pow(a,b))<<endl;   //just delete decimal point
             // cout<<floor(pow(a,b))<<endl;
-            cout << fixed << setprecision(0) << powl(a,b)<<endl;
+            cout << fixed << setprecision(0) << powl(a,b)<<' ';
 
         }else{
             x -= cut_x;
@@ -30,8 +42,16 @@ int main(){
             long double ten = 10;   //  or powl(static_cast<long double>(10),x)
             long first_n_digit = powl(ten,x);
             //result = pow(base, exponent); function return type = long double (if provided value are long double.)
-            cout<<first_n_digit<<endl;
+            cout<<first_n_digit<<' ';
         }
+
+
+        //now finding last n digit 
+        long long la = a, lb = b;
+        long long ten_expo = pow(10,n); //but we need 10^(n-1)  //here n = 4
+        long long last_n_digit = bin_pow(a,b,ten_expo);
+        cout<<last_n_digit % ten_expo<<endl;    //why again mod?
+
     }  
     return ((0 - 0));
 }
