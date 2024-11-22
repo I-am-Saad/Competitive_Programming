@@ -11,7 +11,7 @@ long long bin_pow(long long a, long long b, long long mod){     //mod = 10^last 
     long long ans = 1;
     while(b){
         if(b&1)     //b%2 == 1
-            ans *= a;
+            ans = (ans*a)%mod;
         a = ( (a%mod) * (a%mod) )%mod;
         b>>=1;  //b = b/2;
     }
