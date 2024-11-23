@@ -52,11 +52,9 @@ int main(){
     ios_base::sync_with_stdio(false),cin.tie(nullptr);
     int T; cin>>T; while(T--){
         int n,x,k;
-        // cin>>n>>x>>k;
-        cin>>n>>x;
-        k = 4;
-        cout<<first_k_digits(n,x,k)<<endl;
-        // <<' '<<last_k_digit(n,x,k)<<endl;
+        cin>>n>>x>>k;
+        
+        cout<<first_k_digits(n,x,k)<<' '<<last_k_digit(n,x,k)<<endl;
     }  
     return ((0 - 0));
 }
